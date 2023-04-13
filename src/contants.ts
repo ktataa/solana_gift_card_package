@@ -1,0 +1,1 @@
+export const SOLANA_GIFT = "solanagift:"

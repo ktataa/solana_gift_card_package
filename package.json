@@ -1,0 +1,24 @@
+{
+  "name": "solana_gifts",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "ts-node ./example/index.ts"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@solana/qr-code-styling": "^1.6.0",
+    "@solana/spl-token": "^0.3.7",
+    "@solana/web3.js": "^1.75.0"
+  },
+  "devDependencies": {
+    "@tsconfig/node16": "^1.0.3",
+    "@types/node": "^18.15.11",
+    "ts-node": "^10.9.1",
+    "tslib": "^2.5.0",
+    "typescript": "^5.0.4"
+  }
+}
