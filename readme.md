@@ -11,7 +11,9 @@ A protocol to Create and Redeem Solana Based Gift Cards.
 - Create A Gift Card (SOL/SPL Token)
 - Redeem A Gift Card (No need to have funds for SOL Gift card)
 
+## How it works!
 
+![Alt text](https://github.com/banditesq/solana_gift/blob/main/how_it_works.png "How it works!")
 
 ## Install depencencies
 
