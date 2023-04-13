@@ -15,7 +15,7 @@ A protocol to Create and Redeem Solana Based Gift Cards.
 
 ![Alt text](https://github.com/banditesq/solana_gift/blob/main/how_it_works.png "How it works!")
 
-## Install depencencies
+## Install dependencies
 
 Run the following command
 
