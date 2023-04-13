@@ -17,7 +17,7 @@ A protocol to Create and Redeem Solana Based Gift Cards.
 
 ## Install depencencies
 
-To run the example, run the following command
+Run the following command
 
 ```bash
   npm install
