@@ -35,7 +35,7 @@ To run the example, run the following command
 
 ```javascript
 import { Connection,Transaction} from "@solana/web3.js";
-import { createGift, decodeGiftData, redeemGift } from "../index";
+import { createGift, redeemGift } from "../index";
 
 // Create a Gift
 const { Transaction: createGiftTx, uri } = await createGift(
