@@ -1,5 +1,5 @@
 import { PublicKey, Keypair } from "@solana/web3.js";
-import { SOLANA_GIFT } from "./contants";
+import { SOLANA_GIFT } from "./constants";
 
 export class ParseURLError extends Error {
   name = "ParseeURLError";
