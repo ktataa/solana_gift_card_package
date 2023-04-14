@@ -11,11 +11,13 @@ A protocol to Create and Redeem Solana Based Gift Cards.
 - Create A Gift Card (SOL/SPL Token)
 - Redeem A Gift Card (No need to have funds for SOL Gift card)
 
+## How it works!
 
+![Alt text](https://github.com/banditesq/solana_gift/blob/main/how_it_works.png "How it works!")
 
-## Install depencencies
+## Install dependencies
 
-To run the example, run the following command
+Run the following command
 
 ```bash
   npm install
@@ -33,7 +35,7 @@ To run the example, run the following command
 
 ```javascript
 import { Connection,Transaction} from "@solana/web3.js";
-import { createGift, decodeGiftData, redeemGift } from "../index";
+import { createGift, redeemGift } from "../index";
 
 // Create a Gift
 const { Transaction: createGiftTx, uri } = await createGift(
