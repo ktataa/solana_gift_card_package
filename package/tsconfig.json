@@ -1,0 +1,20 @@
+{
+    "compilerOptions": {
+      "target": "es2022",
+      "module": "commonjs",
+      "incremental": true,
+      "declaration": true,
+      "strict": true,
+      "moduleResolution": "node",
+      "esModuleInterop": true,
+      "skipLibCheck": true,
+      "forceConsistentCasingInFileNames": true,
+      "rootDir": "./src",
+      "outDir": "./lib",
+      "noEmit": true,
+      "isolatedModules": true,
+      "noEmitOnError": true,
+      "resolveJsonModule": true,
+      "stripInternal": true,
+    },
+  }

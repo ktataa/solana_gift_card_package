@@ -4,12 +4,15 @@ import {
   Keypair,
   SystemProgram,
   Transaction,
+
 } from "@solana/web3.js";
 import {
   getAssociatedTokenAddress,
   createTransferInstruction,
-  createAssociatedTokenAccountInstruction,
+  AccountLayout,
+  createInitializeAccountInstruction,
   TOKEN_PROGRAM_ID,
+  getMinimumBalanceForRentExemptAccount
 } from "@solana/spl-token";
 
 import { URI, encodeGiftData } from "./giftURI";
@@ -23,7 +26,7 @@ gift, and `splToken` which is an optional `PublicKey` representing the SPL token
 gift. The `?` after `splToken` indicates that it is optional. This interface is used as a parameter
 in the `createGift` function to ensure that the required fields are provided. */
 export interface CreateGiftFiels {
-  amount: number ;
+  amount: number | bigint;
   splToken?: PublicKey;
 }
 
@@ -51,6 +54,7 @@ export async function createGift(
   const gift_keypair = Keypair.generate();
   const transaction = splToken
     ? await createSPlTokenTransferTx(
+      connection,
         creator,
         { amount, splToken },
         gift_keypair
@@ -99,6 +103,7 @@ async function createSystemTransferTx(
 /**
  * This TypeScript function creates a transaction for transferring a specified amount of a given SPL
  * token from one associated token account to another.
+ * @param {Connection} connection - The connection parameter is an object that represents a connection
  * @param {PublicKey} creator - The public key of the creator of the gift.
  * @param {CreateGiftFiels}   - - `CreateGiftFiels`: an Object holds the gift data.
  * @param {Keypair} giftKeypair - giftKeypair is a Keypair object representing the keypair of the
@@ -106,39 +111,48 @@ async function createSystemTransferTx(
  * @returns a Promise that resolves to a Transaction object.
  */
 async function createSPlTokenTransferTx(
+  connection: Connection,
   creator: PublicKey,
   { amount, splToken }: CreateGiftFiels,
   giftKeypair: Keypair
 ): Promise<Transaction> {
   const transaction = new Transaction();
 
-  const giftSPLTokenATA = await getAssociatedTokenAddress(
-    splToken!,
-    giftKeypair.publicKey
-  );
   const creatorSPLTokenATA = await getAssociatedTokenAddress(
     splToken!,
     creator
   );
 
+  let rent = await getMinimumBalanceForRentExemptAccount(connection)
+
   transaction.add(
-    createAssociatedTokenAccountInstruction(
-      creator,
-      giftSPLTokenATA,
+      
+    SystemProgram.createAccount({
+      fromPubkey: creator,
+      newAccountPubkey: giftKeypair.publicKey,
+      lamports:rent,
+      space:AccountLayout.span,
+      programId:  TOKEN_PROGRAM_ID,
+    }),
+    createInitializeAccountInstruction(
       giftKeypair.publicKey,
-      splToken!
+      splToken!,
+      giftKeypair.publicKey,
     )
   );
   transaction.add(
     createTransferInstruction(
       creatorSPLTokenATA,
-      giftSPLTokenATA,
+      giftKeypair.publicKey,
       creator,
       amount,
       undefined,
-      TOKEN_PROGRAM_ID
     )
   );
+
+  transaction.feePayer = creator;
+  transaction.recentBlockhash = (await connection.getLatestBlockhash()).blockhash
+  transaction.partialSign(giftKeypair)
 
   return transaction;
 }

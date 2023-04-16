@@ -7,6 +7,7 @@ import {
 import { GiftData, URI, decodeGiftData } from "./giftURI";
 import {
   TOKEN_PROGRAM_ID,
+  createCloseAccountInstruction,
   createAssociatedTokenAccountInstruction,
   createTransferInstruction,
   getAccount,
@@ -70,7 +71,7 @@ async function redeemSOL(
     SystemProgram.transfer({
       fromPubkey: giftKeypair.publicKey,
       toPubkey: receiver,
-      lamports: amount - 5000,
+      lamports: Number(amount) -  5000,
     })
   );
 
@@ -98,10 +99,7 @@ async function redeemSPL(
   { amount, giftKeypair, splToken }: GiftData
 ): Promise<Transaction> {
   const transaction = new Transaction();
-  const giftSPLTokenATA = await getAssociatedTokenAddress(
-    splToken!,
-    giftKeypair.publicKey
-  );
+
   const receiverSPLTokenATA = await getAssociatedTokenAddress(
     splToken!,
     receiver
@@ -110,6 +108,7 @@ async function redeemSPL(
     const recipientAccount = await getAccount(connection, receiverSPLTokenATA);
     if (recipientAccount.isFrozen) throw new RedeemError("recipient frozen");
   } catch (error) {
+    
     transaction.add(
       createAssociatedTokenAccountInstruction(
         receiver,
@@ -121,16 +120,21 @@ async function redeemSPL(
   }
   transaction.add(
     createTransferInstruction(
-      giftSPLTokenATA,
+      giftKeypair.publicKey,
       receiverSPLTokenATA,
       giftKeypair.publicKey,
       amount,
       undefined,
       TOKEN_PROGRAM_ID
-    )
+    ),
+    createCloseAccountInstruction(
+      giftKeypair.publicKey,
+      receiver,
+      giftKeypair.publicKey
+      )
   );
 
-  transaction.feePayer = receiver;
+  transaction.feePayer = receiver
 
   transaction.recentBlockhash = (
     await connection.getLatestBlockhash()

@@ -1,6 +1,6 @@
 import { Connection, Keypair, PublicKey, SystemProgram, Transaction, clusterApiUrl } from "@solana/web3.js";
 
-import { createGift, decodeGiftData, redeemGift } from "../index";
+import { createGift, decodeGiftData, redeemGift } from "../src";
 import { MINT_SIZE, TOKEN_PROGRAM_ID, createAssociatedTokenAccountInstruction, createInitializeMint2Instruction, createMintToInstruction, getAssociatedTokenAddress, getMinimumBalanceForRentExemptMint } from "@solana/spl-token";
 
 (async()=>{
@@ -49,7 +49,7 @@ import { MINT_SIZE, TOKEN_PROGRAM_ID, createAssociatedTokenAccountInstruction, c
 
   createGiftTx.feePayer = creatorAccount.publicKey;
   createGiftTx.recentBlockhash = (
-    await connection.getLatestBlockhash()
+    await connection.getRecentBlockhash()
   ).blockhash;
   createGiftTx.sign(creatorAccount);
 
@@ -139,12 +139,9 @@ import { MINT_SIZE, TOKEN_PROGRAM_ID, createAssociatedTokenAccountInstruction, c
 
   const splGiftAddress = decodeGiftData(splGiftURI).giftKeypair.publicKey.toBase58()
   console.log("splGiftAddress :", splGiftAddress);
-  
 
-  splGiftTx.feePayer = creatorAccount.publicKey;
-  splGiftTx.recentBlockhash = (await connection.getLatestBlockhash()).blockhash
 
-  splGiftTx.sign(creatorAccount)
+  splGiftTx.partialSign(creatorAccount)
   const splGift = await connection.sendRawTransaction(splGiftTx.serialize())
 
   await connection.confirmTransaction(splGift,"finalized")
@@ -162,8 +159,7 @@ import { MINT_SIZE, TOKEN_PROGRAM_ID, createAssociatedTokenAccountInstruction, c
   });
 
   const decodedGiftData = decodeGiftData(splGiftURI)
-  console.log("splGiftAddress :", decodedGiftData.giftKeypair.publicKey.toBase58());
-  
+  console.log("splGiftAddress :", decodedGiftData.giftKeypair.publicKey.toBase58());  
 
 
   redeemSPLGiftTx.partialSign(receiverAccount)

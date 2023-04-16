@@ -1,5 +1,5 @@
 import { PublicKey, Keypair } from "@solana/web3.js";
-import { SOLANA_GIFT } from "./constants";
+import { SOLANA_GIFT } from "./contants";
 
 export class ParseURLError extends Error {
   name = "ParseeURLError";
@@ -14,7 +14,7 @@ gift. It has four properties:
 token gift). */
 export interface GiftData {
   giftKeypair: Keypair;
-  amount: number;
+  amount: number| bigint;
   creator: PublicKey;
   splToken?: PublicKey;
 }

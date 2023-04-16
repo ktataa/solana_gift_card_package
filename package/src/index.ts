@@ -1,6 +1,6 @@
 
 export * from "./createGift";
 export * from "./giftURI";
-export * from "./constants"
+export * from "./contants"
 export * from "./redeemGift"
 export * from "./createQR"
