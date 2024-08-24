@@ -126,40 +126,38 @@ function CreateGift() {
         <>
           <div ref={ref} />
           <br />
-          <Button onClick={onDownloadClick} variant="filled">
+          <Button onClick={onDownloadClick} variant="filled" placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>
             Download
           </Button>
 
-          <Button disabled={createDisabled} onClick={create} variant="filled">
+          <Button disabled={createDisabled} onClick={create} variant="filled" placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>
             Create
           </Button>
 
-          <Button onClick={() => setGenerateQR(false)} variant="filled">
+          <Button onClick={() => setGenerateQR(false)} variant="filled" placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>
             Cancel
           </Button>
           <br />
-          <Button onClick={requestAirdrop} variant="filled">
+          <Button onClick={requestAirdrop} variant="filled"  placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>
             Request airdrop
           </Button>
         </>
       ) : (
         <>
           <Input
-            style={{ fontSize: 17, color: "#000000" }}
-            onChange={(e) => setTokenMint(e.target.value)}
-            size="lg"
-            label="Token mint leave empty for SOL"
-          />
+              style={{ fontSize: 17, color: "#000000" }}
+              onChange={(e) => setTokenMint(e.target.value)}
+              size="lg"
+              label="Token mint leave empty for SOL" crossOrigin={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}          />
           <br />
           <Input
-            style={{ fontSize: 17, color: "#000000" }}
-            inputMode="numeric"
-            onChange={(e) => setAmount(Number(e.target.value))}
-            size="lg"
-            label="amount"
-          />
+              style={{ fontSize: 17, color: "#000000" }}
+              inputMode="numeric"
+              onChange={(e) => setAmount(Number(e.target.value))}
+              size="lg"
+              label="amount" crossOrigin={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}          />
           <br />
-          <Button onClick={generate} variant="filled">
+          <Button onClick={generate} variant="filled" placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>
             Generate
           </Button>
         </>

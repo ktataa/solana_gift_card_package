@@ -95,15 +95,15 @@ function RedeemGift() {
     <div>
       {uri?.length ? (
         <>
-          <Card>
-            <CardHeader color="blue" className="relative h-56">
+          <Card  placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>
+            <CardHeader color="blue" className="relative h-56" placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>
               <img
                 src="https://www.freepnglogos.com/uploads/gift-png/file-gift-flat-icon-vector-svg-wikimedia-commons-10.png"
                 alt="img-blur-shadow"
                 className="h-full w-full"
               />
             </CardHeader>
-            <CardBody className="text-center">
+            <CardBody className="text-center" placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>
               <Typography variant="h5" className="mb-2">
                 {tokenDecimal
                   ? Number(giftData?.amount!) / 10 ** tokenDecimal
@@ -113,21 +113,20 @@ function RedeemGift() {
             </CardBody>
           </Card>
 
-          <Button disabled={redeemDisabled} onClick={redeem} variant="filled">
+          <Button disabled={redeemDisabled} onClick={redeem} variant="filled" placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>
             Redeem
           </Button>
-          <Button onClick={() => setURI("")} variant="filled">
+          <Button onClick={() => setURI("")} variant="filled" placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>
             Cancel
           </Button>
         </>
       ) : (
         <>
           <Input
-            onChange={(e) => onFileUpload(e)}
-            type="file"
-            size="lg"
-            label="QR code file"
-          />
+              onChange={(e) => onFileUpload(e)}
+              type="file"
+              size="lg"
+              label="QR code file" onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined} crossOrigin={undefined}          />
           <br />
         </>
       )}

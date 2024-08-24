@@ -28,31 +28,28 @@ function TabsScreen() {
     <Card
       color="indigo"
       variant="gradient"
-      className="w-full max-w-[35rem] p-8"
-    >
+      className="w-full max-w-[35rem] p-8" placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}    >
       <Tabs id="custom-animation" value="create">
         <CardHeader
           floated={false}
           shadow={false}
           color="transparent"
-          className="m-0 mb-8 rounded-none border-b border-white/10 pb-10 text-center"
-        >
-          <TabsHeader>
+          className="m-0 mb-8 rounded-none border-b border-white/10 pb-10 text-center" placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}        >
+          <TabsHeader placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>
             {data.map(({ label, value }) => (
-              <Tab key={value} value={value}>
+              <Tab key={value} value={value} placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>
                 {label}
               </Tab>
             ))}
           </TabsHeader>
         </CardHeader>
-        <CardBody className="p-0">
+        <CardBody className="p-0" placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>
           <TabsBody
             animate={{
               initial: { y: 250 },
               mount: { y: 0 },
               unmount: { y: 250 },
-            }}
-          >
+            }}  placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}          >
             <TabPanel key={"create"} value={"create"}>
               <CreateGift></CreateGift>
             </TabPanel>
