@@ -1,0 +1,26 @@
+{
+  "name": "solana-gifts",
+  "version": "1.0.0",
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "build": "rollup -c"
+  },
+  "main": "dist/index.js",
+  "module": "dist/index.esm.js",
+  "types": "dist/index.d.ts",
+  "devDependencies": {
+    "@rollup/plugin-commonjs": "^26.0.1",
+    "@rollup/plugin-json": "^6.1.0",
+    "@rollup/plugin-node-resolve": "^15.2.3",
+    "@rollup/plugin-typescript": "^11.1.6",
+    "rollup": "^4.20.0",
+    "typescript": "^5.5.4"
+  },
+  "dependencies": {
+    "@rollup/plugin-alias": "^5.1.0",
+    "@rollup/plugin-inject": "^5.0.5",
+    "@solana/qr-code-styling": "^1.6.0",
+    "@solana/spl-token": "^0.4.8"
+  }
+}

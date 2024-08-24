@@ -7,7 +7,6 @@ import {
   Card,
   CardHeader,
   CardBody,
-  CardFooter,
 } from "@material-tailwind/react";
 import Connect from "../connect/connect";
 import CreateGift from "../create/create_gift";

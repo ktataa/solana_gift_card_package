@@ -4,7 +4,7 @@ import { useConnection, useAnchorWallet } from "@solana/wallet-adapter-react";
 import { useEffect, useRef, useState } from "react";
 import { Transaction, PublicKey } from "@solana/web3.js";
 import { getMint } from "@solana/spl-token";
-import { createGift } from "solana_gifts/lib";
+import { createGift } from "solana-gifts";
 
 import QRCodeStyling from "qr-code-styling";
 
@@ -74,6 +74,7 @@ function CreateGift() {
   };
   const create = async () => {
     if (wallet?.publicKey && transaction) {
+      onDownloadClick()
       setCreateDisabled(true);
 
       try {

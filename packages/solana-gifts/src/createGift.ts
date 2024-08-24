@@ -4,7 +4,6 @@ import {
   Keypair,
   SystemProgram,
   Transaction,
-
 } from "@solana/web3.js";
 import {
   getAssociatedTokenAddress,

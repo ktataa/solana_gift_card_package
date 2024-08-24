@@ -10,7 +10,7 @@ import {
 } from "@material-tailwind/react";
 import { useState } from "react";
 import QrScanner from "qr-scanner";
-import { decodeGiftData, GiftData, redeemGift } from "solana_gifts/lib";
+import { decodeGiftData, GiftData, redeemGift } from "solana-gifts";
 import {
   useConnection,
   useAnchorWallet,
