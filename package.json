@@ -7,6 +7,12 @@
   "workspaces": [
     "packages/*",
     "./solana-gifts-react"
-  ]
+  ],
+  "scripts": {
+    "build-package": "yarn workspace solana-gifts build e",
+    "start-react": "yarn workspace solana-gifts-react start",
+    "build-and-start": "yarn workspace solana-gifts build  && yarn workspace solana-gifts-react start",
+    "build-all": "yarn workspace solana-gifts build && yarn workspace solana-gifts-react build"
+  }
   
 }
