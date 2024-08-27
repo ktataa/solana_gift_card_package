@@ -12,6 +12,6 @@
     "build-package": "yarn workspace solana-gifts build e",
     "start-react": "yarn workspace solana-gifts-react start",
     "build-and-start": "yarn workspace solana-gifts build  && yarn workspace solana-gifts-react start",
-    "build-all": "CI=false yarn workspace solana-gifts build && CI=false yarn workspace solana-gifts-react build"
+    "build-all": "CI=false yarn workspace solana-gifts build && yarn workspace solana-gifts-react add tailwindcss@latest postcss@latest autoprefixer@latest --save && CI=false yarn workspace solana-gifts-react build"
   }
 }
