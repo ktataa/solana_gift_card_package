@@ -147,7 +147,7 @@ function CreateGift() {
               style={{ fontSize: 17, color: "#000000" }}
               onChange={(e) => setTokenMint(e.target.value)}
               size="lg"
-              label="Token mint leave empty for SOL" crossOrigin={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}          />
+              label="Token address leave empty for SOL" crossOrigin={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}          />
           <br />
           <Input
               style={{ fontSize: 17, color: "#000000" }}
