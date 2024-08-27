@@ -1,5 +1,4 @@
 import { Input, Button, Alert, Typography } from "@material-tailwind/react";
-
 import { useConnection, useAnchorWallet } from "@solana/wallet-adapter-react";
 import { useEffect, useRef, useState } from "react";
 import { Transaction, PublicKey } from "@solana/web3.js";

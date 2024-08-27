@@ -28,7 +28,7 @@ function TabsScreen() {
     <Card
       color="indigo"
       variant="gradient"
-      className="w-full max-w-[35rem] p-8" placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}    >
+      className="w-full max-w-[35rem] p-8" placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>
       <Tabs id="custom-animation" value="create">
         <CardHeader
           floated={false}

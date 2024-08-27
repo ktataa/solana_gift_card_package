@@ -14,5 +14,4 @@
     "build-and-start": "yarn workspace solana-gifts build  && yarn workspace solana-gifts-react start",
     "build-all": "CI=false yarn workspace solana-gifts build && CI=false yarn workspace solana-gifts-react build"
   }
-  
 }

@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import { useMemo } from "react";
 import "./App.css";
 import {
   ConnectionProvider,
@@ -12,6 +12,7 @@ import {
 import { clusterApiUrl } from "@solana/web3.js";
 import MainScreen from "./components/screens/main_screen";
 import { ThemeProvider } from "@material-tailwind/react";
+
 (window as any).global = window;
 
 function App() {
