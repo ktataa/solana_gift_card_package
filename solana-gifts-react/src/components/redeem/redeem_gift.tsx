@@ -114,7 +114,7 @@ function RedeemGift() {
           </Card>
 
           <Button disabled={redeemDisabled} onClick={redeem} variant="filled" placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>
-            Redeem
+          {redeemDisabled? "Redeeming....": "Redeem"}
           </Button>
           <Button onClick={() => setURI("")} variant="filled" placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>
             Cancel

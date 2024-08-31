@@ -130,7 +130,7 @@ function CreateGift() {
           </Button>
 
           <Button disabled={createDisabled} onClick={create} variant="filled" placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>
-            Create
+           { createDisabled? "Creating....": "Create"}
           </Button>
 
           <Button onClick={() => setGenerateQR(false)} variant="filled" placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>
