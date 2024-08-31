@@ -45,8 +45,8 @@ export async function createGift(
   connection: Connection,
   creator: PublicKey,
   { amount, splToken }: CreateGiftFiels
-): Promise<{ Transaction: Transaction; uri: URI }> {
-  const creatorInfo = await connection.getAccountInfo(creator);
+): Promise<{ Transaction: Transaction; uri: URI }> {  
+  const creatorInfo = await connection.getParsedAccountInfo(creator);
   if (!creatorInfo) throw new CreateGiftError("creator not found");
   if (amount == 0) throw new CreateGiftError("amount can't be zero");
 
